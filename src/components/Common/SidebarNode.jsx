@@ -65,8 +65,16 @@ const SidebarNode = (props) => {
             <li
               class="mb-2 flex items-center justify-between p-3  rounded-lg relative group p-6 cursor-pointer"
               draggable="true"
-              onDragStart={() => setIsDragging(true)}
-              onDragEnd={() => setTimeout(() => setIsDragging(false), 200)} // Reset after drag ends
+              onDragStart={(e) => {
+                setIsDragging(true);
+                e.dataTransfer.setData(
+                  "application/json",
+                  JSON.stringify(item)
+                );
+              }}
+              onDragEnd={() => {
+                setTimeout(() => setIsDragging(false), 200);
+              }} // Reset after drag ends
               onClick={(e) => {
                 if (!isDragging()) {
                   props.clickAddNodeHandler(
@@ -76,7 +84,6 @@ const SidebarNode = (props) => {
                     item.data[2],
                     item.data[3]
                   );
-                  props.setIsOpen(true);
                   props.closeSidebar();
                 }
               }}
