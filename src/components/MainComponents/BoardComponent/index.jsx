@@ -213,7 +213,7 @@ const BoardComponent = () => {
 
       {/* Board Content */}
       <div
-        class={`flex items-center justify-center w-screen h-screen  ${
+        class={`flex items-center justify-center w-[400%] h-[400%]  ${
           ctrlPressed() || spacePressed() ? "cursor-grabbing" : "cursor-auto"
         }`}
         style={{
