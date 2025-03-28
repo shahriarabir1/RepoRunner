@@ -124,9 +124,7 @@ const BoardComponent = () => {
   function handleOnMouseDownNode(id, event) {
     setSelectedNode(id);
     setIsDraggingNode(true);
-
     setClickedPosition({ x: event.clientX, y: event.clientY });
-
     const node = nodes().find((node) => node.id === id);
     if (node) {
       node.prevPosition.set({
@@ -195,7 +193,7 @@ const BoardComponent = () => {
       class="w-screen z-0 h-screen overflow-hidden flex flex-col items-center justify-center bg-[radial-gradient(circle,#6b6b6b_1.3px,transparent_0px)] bg-[#2e2e2e] bg-[size:30px_30px]"
     >
       {/* Top Right "+" Button */}
-      <div class="w-full flex justify-end p-4">
+      <div class="absolute w-full flex justify-end p-4 top-0">
         <ButtonComponent
           setSidebarVisible={setSidebarVisible}
           toggleSidebar={toggleSidebar}
